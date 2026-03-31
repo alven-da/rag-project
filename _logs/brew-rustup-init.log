@@ -1,0 +1,33 @@
+brew install rustup-init
+==> Auto-updating Homebrew...
+Adjust how often this is run with `$HOMEBREW_AUTO_UPDATE_SECS` or disable with
+`$HOMEBREW_NO_AUTO_UPDATE=1`. Hide these hints with `$HOMEBREW_NO_ENV_HINTS=1` (see `man brew`).
+^C source ~/personal_projs/rag-project/myenv/bin/activate
+✔︎ JSON API cask.jws.json                                                                                             Downloaded   15.4MB/ 15.4MB
+✔︎ JSON API formula.jws.json                                                                                          Downloaded   32.0MB/ 32.0MB
+==> Fetching downloads for: rustup
+✔︎ Bottle Manifest rustup (1.29.0)                                                                                    Downloaded   15.5KB/ 15.5KB
+✔︎ Bottle rustup (1.29.0)                                                                                             Downloaded    4.9MB/  4.9MB
+==> Pouring rustup--1.29.0.arm64_tahoe.bottle.tar.gz
+ source ~/personal_projs/rag-project/myenv/bin/activate
+==> Caveats
+To initialize `rustup`, set a default toolchain:
+  rustup default stable
+
+If you have `rust` installed, ensure you have "$(brew --prefix rustup)/bin"
+before "$(brew --prefix)/bin" in your $PATH:
+  https://rust-lang.github.io/rustup/installation/already-installed-rust.html
+
+rustup is keg-only, which means it was not symlinked into /opt/homebrew,
+because it conflicts with rust.
+
+If you need to have rustup first in your PATH, run:
+  echo 'export PATH="/opt/homebrew/opt/rustup/bin:$PATH"' >> ~/.zshrc
+==> Summary
+🍺  /opt/homebrew/Cellar/rustup/1.29.0: 27 files, 11.3MB
+==> Running `brew cleanup rustup`...
+Disable this behaviour by setting `HOMEBREW_NO_INSTALL_CLEANUP=1`.
+Hide these hints with `HOMEBREW_NO_ENV_HINTS=1` (see `man brew`).
+==> Caveats
+zsh completions have been installed to:
+  /opt/homebrew/opt/rustup/share/zsh/site-functions

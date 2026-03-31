@@ -1,0 +1,57 @@
+[
+  {
+    "sku": "TRX-9000",
+    "name": "TerraMax Pro Drill",
+    "category": "Power Tools",
+    "specs": {
+      "voltage": "20V",
+      "torque": "600 in-lbs",
+      "brushless": true
+    },
+    "description": "A heavy-duty cordless drill designed for industrial masonry and wood boring."
+  },
+  {
+    "sku": "LIT-400",
+    "name": "LuminaSmart Floodlight",
+    "category": "Home Security",
+    "specs": {
+      "brightness": "3000 Lumens",
+      "weatherproof_rating": "IP65",
+      "connectivity": "Zigbee 3.0"
+    },
+    "description": "Motion-activated outdoor security light with automated scheduling features."
+  },
+  {
+    "sku": "CYB-X1",
+    "name": "CyberPulse ANC Headphones",
+    "category": "Electronics",
+    "specs": {
+      "battery_life": "40 hours",
+      "noise_cancellation": "Active",
+      "driver_size": "40mm"
+    },
+    "description": "Premium over-ear headphones with hybrid active noise cancellation and spatial audio support."
+  },
+  {
+    "sku": "KITCH-77",
+    "name": "AeroFryer Elite",
+    "category": "Appliances",
+    "specs": {
+      "capacity": "5.8 Quarts",
+      "max_temp": "400°F",
+      "presets": 10
+    },
+    "description": "High-speed air fryer with cyclonic technology for oil-free cooking."
+  },
+  {
+    "sku": "HYDRO-Z",
+    "name": "HydroFlow Filtration System",
+    "category": "Home Improvement",
+    "specs": {
+      "stages": 5,
+      "filter_life": "6 months",
+      "flow_rate": "2.5 GPM"
+    },
+    "description": "Under-sink reverse osmosis water filtration system with lead and chlorine removal."
+  }
+]

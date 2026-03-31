@@ -1,0 +1,37 @@
+[
+  {
+    "sku": "TRX-9000",
+    "warranty_period": "36 months",
+    "coverage": "Limited Lifetime on motor, 3 years on housing.",
+    "exclusions": "Battery wear and tear, water submersion, or professional rental use.",
+    "claims_process": "Contact support@terramax.com with proof of purchase."
+  },
+  {
+    "sku": "LIT-400",
+    "warranty_period": "12 months",
+    "coverage": "Full replacement for LED failure or sensor malfunction.",
+    "exclusions": "Damage caused by improper electrical installation or lightning strikes.",
+    "claims_process": "Return to authorized dealer or use the LuminaSmart App portal."
+  },
+  {
+    "sku": "CYB-X1",
+    "warranty_period": "24 months",
+    "coverage": "Internal hardware failure and battery degradation over 30%.",
+    "exclusions": "Physical damage to ear cushions or cracked headbands.",
+    "claims_process": "Submit a ticket via cyberpulse-audio.io/support."
+  },
+  {
+    "sku": "KITCH-77",
+    "warranty_period": "12 months",
+    "coverage": "Heating element and fan motor replacement.",
+    "exclusions": "Cosmetic scratches to non-stick coating or dishwasher damage.",
+    "claims_process": "Requires original box for return shipping to service center."
+  },
+  {
+    "sku": "HYDRO-Z",
+    "warranty_period": "60 months",
+    "coverage": "Manifold housing and faucet assembly.",
+    "exclusions": "Replacement filters (consumables) and damage from freezing pipes.",
+    "claims_process": "Registration required within 30 days of installation to activate 5-year term."
+  }
+]
