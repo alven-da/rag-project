@@ -1,15 +1,13 @@
 import sys
+
 from langchain_community.llms import Ollama
 from langchain.chains import RetrievalQA
 from langchain_core.prompts import PromptTemplate
 from vector_store import VectorStoreManager
 
 def start_chat():
-    # 1. Initialize the Local Brain (Llama 3)
-    # This calls your local Ollama server
     llm = Ollama(model="llama3")
 
-    # 2. Load the Knowledge Base (FAISS)
     vs_manager = VectorStoreManager()
     vectorstore = vs_manager.load_index()
 
@@ -33,32 +31,45 @@ def start_chat():
         template=template,
     )
 
-    # 4. Create the Retrieval Chain
-    # 'k=2' means it will grab the top 2 most relevant merged JSON records
-    qa_chain = RetrievalQA.from_chain_type(
-        llm=llm,
-        chain_type="stuff",
-        retriever=vectorstore.as_retriever(search_kwargs={"k": 2}),
-        chain_type_kwargs={"prompt": QA_CHAIN_PROMPT},
-        return_source_documents=True # This allows us to see which SKU was used
-    )
-
-    print("\n--- RAG Support System Ready (Llama 3) ---")
-    print("Ask me about product specs or warranty coverage. (Type 'exit' to quit)")
+    print("\n--- RAG Support System (Filtered Search) ---")
+    print("Categories: Power Tools, Home Security, Electronics, Appliances, Home Improvement")
+    print("Type 'exit' to quit.")
 
     while True:
-        user_input = input("\nUser: ")
-        if user_input.lower() in ['exit', 'quit', 'q']:
+        cat_input = input("\n[Filter Category] e.g. Power Tools | Home Security | Electronics | Appliances | Home Improvement (or press Enter for All): ").strip()
+        
+        user_query = input("[Your Query]: ").strip()
+        
+        if user_query.lower() in ['exit', 'quit', 'q']:
             break
 
-        # Execute the RAG logic
-        result = qa_chain.invoke({"query": user_input})
+        # intial value for search_kwargs
+        search_kwargs = {"k": 2}
+
+        # if there is an input for category, add the filter to search_kwargs
+        # assuming the category names in metadata are exactly as listed in the prompt (case-sensitive)
+        if cat_input:
+            search_kwargs["filter"] = {"category": cat_input}
+            print(f"--- Searching only in {cat_input} ---")
+
+        # Step D: Re-initialize the chain with the specific filter
+        # In a production API, you'd do this per request
+        qa_chain = RetrievalQA.from_chain_type(
+            llm=llm,
+            chain_type="stuff",
+            retriever=vectorstore.as_retriever(search_kwargs=search_kwargs),
+            chain_type_kwargs={"prompt": QA_CHAIN_PROMPT},
+            return_source_documents=True
+        )
+
+        # Step E: Execute
+        result = qa_chain.invoke({"query": user_query})
         
         print(f"\nAI: {result['result']}")
         
-        # Senior Tip: Observability. Show which SKU the AI looked at.
+        # Observability: Confirm which SKUs were pulled
         sources = [doc.metadata.get('sku') for doc in result['source_documents']]
-        print(f"\n[Source Context: {', '.join(sources)}]")
+        print(f"[Verified Sources: {', '.join(sources)}]")
 
 if __name__ == "__main__":
     start_chat()

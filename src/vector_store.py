@@ -1,6 +1,6 @@
 import os
+
 from typing import List
-from langchain.prompts import ChatPromptTemplate, PromptTemplate
 from langchain_community.vectorstores import FAISS
 from langchain_community.embeddings import OllamaEmbeddings
 from langchain_core.documents import Document
@@ -32,6 +32,19 @@ class VectorStoreManager:
                 self.embeddings
             )
         return None
+
+    # Placeholder for the filtered search method we'll implement in main.py
+    def search_with_filter(self, query: str, category_name: str, k: int = 2):
+        vs = self.load_index()
+        
+        # FAISS uses a simple dictionary filter for metadata
+        # This says: "Only look at docs where metadata['category'] == category_name"
+        search_kwargs = {
+            "filter": {"category": category_name},
+            "k": k
+        }
+    
+        return vs.similarity_search(query, **search_kwargs)
     
 if __name__ == "__main__":
     from loader import JSONLoader
