@@ -41,10 +41,10 @@ class JSONLoader:
             )
             
             # 3. Create a LangChain Document object
-            # We keep the SKU in metadata for potential filtering later
+            # We keep the SKU and category in metadata so filters can be applied
             doc = Document(
                 page_content=text_content,
-                metadata={"sku": sku, "source": "product_warranty_merge"}
+                metadata={"sku": sku, "category": product.get('category', ''), "source": "product_warranty_merge"}
             )
             unified_docs.append(doc)
 

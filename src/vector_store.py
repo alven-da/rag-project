@@ -33,8 +33,8 @@ class VectorStoreManager:
             )
         return None
 
-    # Placeholder for the filtered search method we'll implement in main.py
     def search_with_filter(self, query: str, category_name: str, k: int = 2):
+        """Run a similarity search filtered by category metadata."""
         vs = self.load_index()
         
         # FAISS uses a simple dictionary filter for metadata

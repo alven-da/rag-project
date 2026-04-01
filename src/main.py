@@ -1,5 +1,3 @@
-import sys
-
 from langchain_community.llms import Ollama
 from langchain.chains import RetrievalQA
 from langchain_core.prompts import PromptTemplate
@@ -37,13 +35,16 @@ def start_chat():
 
     while True:
         cat_input = input("\n[Filter Category] e.g. Power Tools | Home Security | Electronics | Appliances | Home Improvement (or press Enter for All): ").strip()
-        
+
+        if cat_input.lower() in ['exit', 'quit', 'q']:
+            break
+
         user_query = input("[Your Query]: ").strip()
         
         if user_query.lower() in ['exit', 'quit', 'q']:
             break
 
-        # intial value for search_kwargs
+        # initial value for search_kwargs
         search_kwargs = {"k": 2}
 
         # if there is an input for category, add the filter to search_kwargs
